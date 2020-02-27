@@ -1,0 +1,35 @@
+-------------------------------- TEMA 1 PA------------------------------
+-----------------------------TERIS OLGA 323CC---------------------------
+
+	PROBLEMA 1
+
+  Scopul acestui joc este ca fiecare jucator sa maximizeze diferenta dintre
+scor si scorul adversarului. Pentru aceasta am stocat numerele din sir 
+intr-un vector si l-am sortat crescator. Apoi parcurg vectorul sortat de
+la sfarsit din 2 in 2 si adaug la scorul lui Tuzgu elementul de la indicele
+curent si Ritzei cel de la indicele curent - 1. In caz ca am un nr impar de
+elemente, la final fac verificarea daca mai e un element ramas in vector cu 
+ajutorul ultimului indice salvat intr-o variabila auxiliara. Daca mai e un 
+numar in sir, il adaug la scorul lui Tuzgu. De asemenea, la inceput, fac 
+verificarea daca e doar un singur element in sir si il adaug direct lui 
+Tuzgu.
+ Complexitatea O(n)
+
+
+	PROBLEMA 3
+
+  In acest joc se poate elimina fie elementul cel mai din stanga, fie cel mai 
+din dreapta. Pentru a calcula diferenta maxima, luand in consideratie ca
+jucatorii joaca optim, construim o recurenta pe baza careia urmeaza sa 
+construim tabeluri de solutii ale subproblemelor. Recurenta este :
+F(i, j) = Max(Vi + min(F(i+2, j), F(i+1, j-1) ), Vj + min(F(i+1, j-1), F(i, j-2)))
+iar cazurile de baza sunt  
+daca  j == i atunci F(i, j)  = Vi 
+si daca j == i+1 atunci F(i, j)  = max(Vi, Vj).
+Apoi calculam cele 3 valori din recurenta F(i+2, j), F(i+1, j-1) si F(i, j-2)
+si solutia subproblemei pe care urmeaza sa o inseram in tabel. In final, 
+solutia acestei probleme se va afla pe pozitia F[0][n - 1] din tabel, acesta
+este scorul maxim acumulat de Tuzgu. Pentru a calcula scorul acumulat de Ritza,
+calculez suma elementelor din vector si scad scorul lui Tuzgu.
+ Complexitatea O(n^2)   
+
